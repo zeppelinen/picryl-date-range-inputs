@@ -342,7 +342,7 @@ class DateRangeInput extends Component {
   }
 }
 
-export default {
+export {
   DateRangeInput,
   rangeToStrValue,
   strValueToRange,
