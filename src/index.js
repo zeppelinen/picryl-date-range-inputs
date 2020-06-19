@@ -69,7 +69,7 @@ function rangeToStrValue([minDate, maxDate]) {
     return '';
   }
 
-  if (minDate == INVALID_DATE) {
+  if (minDate === INVALID_DATE) {
     return maxDate;
   }
 
@@ -87,7 +87,7 @@ function rangeToStrValue([minDate, maxDate]) {
     return `${moment.utc(minDate).format(minFormat).replace('-', '')} - ${moment.utc(maxDate).format(maxFormat).replace('-', '')}`;
   }
 
-  if (minDate == maxDate) {
+  if (minDate === maxDate) {
     return moment.utc(minDate).format(FORMAT.FULL_SLASH_REVERSED);
   }
 
@@ -95,8 +95,8 @@ function rangeToStrValue([minDate, maxDate]) {
     return moment.utc(minDate).format(FORMAT.YEAR);
   }
 
-  const isMaxDateStartOfYear = moment.utc(minDate).format(MONTH_DATE_FORMAT) == START_OF_YEAR;
-  const isMaxDateEndOfYear = moment.utc(maxDate).format(MONTH_DATE_FORMAT) == END_OF_YEAR;
+  const isMaxDateStartOfYear = moment.utc(minDate).format(MONTH_DATE_FORMAT) === START_OF_YEAR;
+  const isMaxDateEndOfYear = moment.utc(maxDate).format(MONTH_DATE_FORMAT) === END_OF_YEAR;
 
   if (isMaxDateStartOfYear && isMaxDateEndOfYear) {
     return `${moment.utc(minDate).format(FORMAT.YEAR)} - ${moment.utc(maxDate).format(FORMAT.YEAR)}`
@@ -303,10 +303,8 @@ class DateRangeInput extends Component {
 
   isValueInvalid(strValue) {
     const [minDate, maxDate] = strValueToRange(strValue);
-    if (minDate == INVALID_DATE) {
-      return true;
-    }
-    return false;
+    return minDate === INVALID_DATE;
+
   }
 
   render() {
@@ -342,7 +340,7 @@ class DateRangeInput extends Component {
   }
 }
 
-export {
+export default {
   DateRangeInput,
   rangeToStrValue,
   strValueToRange,
