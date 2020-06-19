@@ -64,7 +64,7 @@ const FORMAT_REGEXP = {
 // 01/09/1905 - 01/10/1905
 // 1003 bc
 // 1003 bc - 500 bc
-function rangeToStrValue([minDate, maxDate]) {
+export function rangeToStrValue([minDate, maxDate]) {
   if (!minDate || !maxDate) {
     return '';
   }
@@ -118,7 +118,7 @@ function rangeToStrValue([minDate, maxDate]) {
 // 01/09/1901
 // 01/09/1901 - 01/09/1902
 // 1000 bc
-function strValueToRange(strValue) {
+export function strValueToRange(strValue) {
   let minDate;
   let maxDate;
 
@@ -252,7 +252,7 @@ function strValueToRange(strValue) {
 }
 
 
-class DateRangeInput extends Component {
+export class DateRangeInput extends Component {
   static propTypes = {
     placeholder: PropTypes.string,
     id: PropTypes.string,
